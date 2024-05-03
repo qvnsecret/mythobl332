@@ -1,3 +1,4 @@
+require('dotenv').config(); // Load environment variables from .env file
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
@@ -21,4 +22,4 @@ client.on('messageCreate', message => {
     }
 });
 
-client.login(`MTIzNjA1MjM4MDc4NTU3MzkzMA.G2cThU.JPj5c0Y2c8wehTzrZYOUxgHdQJ4WFnV1zI1nhI`); // Replace YOUR_BOT_TOKEN with your actual bot token
+client.login(process.env.token); // Use the bot token from environment variable
