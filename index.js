@@ -1,4 +1,5 @@
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();  // This line loads the environment variables from the .env file
+
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
@@ -22,4 +23,4 @@ client.on('messageCreate', message => {
     }
 });
 
-client.login(process.env.token); // Use the bot token from environment variable
+client.login(process.env.token); // Use the DISCORD_TOKEN environment variable
