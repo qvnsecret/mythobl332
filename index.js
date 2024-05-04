@@ -1,7 +1,13 @@
-require('dotenv').config();  // This line loads the environment variables from the .env file
+require('dotenv').config();
 
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
+    ]
+});
 
 client.once('ready', () => {
     console.log('Ready!');
@@ -9,7 +15,7 @@ client.once('ready', () => {
 
 client.on('messageCreate', message => {
     if (!message.content.startsWith('.send') || message.author.bot) return;
-    
+
     const args = message.content.slice(6).trim();
     const attachments = message.attachments.map(attachment => attachment.url);
 
@@ -23,4 +29,4 @@ client.on('messageCreate', message => {
     }
 });
 
-client.login(process.env.token); // Use the DISCORD_TOKEN environment variable
+client.login(process.env.DISCORD_TOKEN); // Ensures the bot uses the token from the environment variable
